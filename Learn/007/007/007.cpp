@@ -162,7 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		GetWindowRect(hWnd, &winRect);
 		wsprintf(buffer, L"현재 창 좌표: (%d, %d, %d, %d)", winRect.left, winRect.top, winRect.right, winRect.bottom);
 		TextOut(hdc, 16, 16 * 2, buffer, wcslen(buffer));
-		wsprintf(buffer, L"현재 창 크기: %d * %d", winRect.right - abs(winRect.left), winRect.bottom - abs(winRect.top));
+		wsprintf(buffer, L"현재 창 크기: %d * %d", winRect.right - winRect.left, winRect.bottom - winRect.top);
 		TextOut(hdc, 16, 16 * 3, buffer, wcslen(buffer));
 
 		// 3. 현재 윈도우 클라이언트(Client) 크기 구하기 - GetClientRect
