@@ -1,5 +1,5 @@
-ï»¿#include "framework.h"
-#include "011.h"
+#include "framework.h"
+#include "Sliding-Puzzle-Game.h"
 
 #define swap(_a, _b) { int _c = _a; _a = _b; _b = _c; }
 
@@ -21,15 +21,15 @@ LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int block[3][3] = {
-	{ IMG_001, IMG_002, IMG_003},
-	{ IMG_004, IMG_005, IMG_006},
-	{ IMG_007, IMG_008, IMG_BLANK}
+	{ IDB_BITMAP_001, IDB_BITMAP_002, IDB_BITMAP_003},
+	{ IDB_BITMAP_004, IDB_BITMAP_005, IDB_BITMAP_006},
+	{ IDB_BITMAP_007, IDB_BITMAP_008, IDB_BITMAP_BLANK}
 };
 
 int blockOri[3][3] = {
-	{ IMG_001, IMG_002, IMG_003},
-	{ IMG_004, IMG_005, IMG_006},
-	{ IMG_007, IMG_008, IMG_BLANK}
+	{ IDB_BITMAP_001, IDB_BITMAP_002, IDB_BITMAP_003},
+	{ IDB_BITMAP_004, IDB_BITMAP_005, IDB_BITMAP_006},
+	{ IDB_BITMAP_007, IDB_BITMAP_008, IDB_BITMAP_BLANK}
 };
 
 bool isPlaying = false;
@@ -37,37 +37,37 @@ bool isPlaying = false;
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
-	_In_ int       nCmdShow) {
+	_In_ int       nCmdShow){
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	//START_DEBUG_CONSOLE(); // ë””ë²„ê·¸ìš© ì½˜ì†”
+	//START_DEBUG_CONSOLE(); // µð¹ö±× ÄÜ¼Ö ½ÃÀÛ
 
 	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadStringW(hInstance, IDC_MY011, szWindowClass, MAX_LOADSTRING);
+	LoadStringW(hInstance, IDC_SLIDINGPUZZLEGAME, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
-	if (!InitInstance(hInstance, nCmdShow)) {
+	if(!InitInstance(hInstance, nCmdShow)){
 		return FALSE;
 	}
 
-	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MY011));
+	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_SLIDINGPUZZLEGAME));
 
 	MSG msg;
 
-	while (GetMessage(&msg, nullptr, 0, 0)) {
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
+	while(GetMessage(&msg, nullptr, 0, 0)){
+		if(!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)){
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 	}
 
-	//STOP_DEBUG_CONSOLE();
+	//STOP_DEBUG_CONSOLE(); // µð¹ö±× ÄÜ¼Ö Á¾·á
 
 	return (int)msg.wParam;
 }
 
-ATOM MyRegisterClass(HINSTANCE hInstance) {
+ATOM MyRegisterClass(HINSTANCE hInstance){
 	WNDCLASSEXW wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -77,26 +77,26 @@ ATOM MyRegisterClass(HINSTANCE hInstance) {
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MY011));
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_SLIDINGPUZZLEGAME));
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
-	wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_MY011);
+	wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_SLIDINGPUZZLEGAME);
 	wcex.lpszClassName = szWindowClass;
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	return RegisterClassExW(&wcex);
 }
 
-BOOL InitInstance(HINSTANCE hInstance, int nCmdShow) {
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow){
 	hInst = hInstance;
 
-	RECT clientRect = {0, 0, IMG_WIDTH, IMG_HEIGHT};
+	RECT clientRect = { 0, 0, IMG_WIDTH, IMG_HEIGHT };
 	AdjustWindowRect(&clientRect, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, true);
 
 	HWND hWnd = CreateWindowW(
 		szWindowClass,
 		szTitle,
-		WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
+		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		0,
 		clientRect.right - clientRect.left,
@@ -107,7 +107,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow) {
 		nullptr
 	);
 
-	if (!hWnd) {
+	if(!hWnd){
 		return FALSE;
 	}
 
@@ -117,10 +117,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow) {
 	return TRUE;
 }
 
-bool isClear() {
-	for (int i = 0; i < sizeof(block) / sizeof(block[0]); i++) {
-		for (int j = 0; j < sizeof(block[0]) / sizeof(block[0][0]); j++) {
-			if (block[j][i] != blockOri[j][i]) {
+bool isClear(){
+	for(int i = 0; i < sizeof(block) / sizeof(block[0]); i++){
+		for(int j = 0; j < sizeof(block[0]) / sizeof(block[0][0]); j++){
+			if(block[j][i] != blockOri[j][i]){
 				return false;
 			}
 		}
@@ -128,16 +128,16 @@ bool isClear() {
 	return true;
 }
 
-bool moveBlock(HWND hWnd, int blockX, int blockY, int nextX, int nextY) {
-	if (!isPlaying) {
+bool moveBlock(HWND hWnd, int blockX, int blockY, int nextX, int nextY){
+	if(!isPlaying){
 		return false;
 	}
 
-	if (!(0 <= nextX && nextX <= 2 && 0 <= nextY && nextX <= 2)) {
+	if(!(0 <= nextX && nextX <= 2 && 0 <= nextY && nextX <= 2)){
 		return false;
 	}
 
-	if (block[nextY][nextX] == IMG_BLANK) {
+	if(block[nextY][nextX] == IDB_BITMAP_BLANK){
 		swap(block[blockY][blockX], block[nextY][nextX]);
 	}
 
@@ -147,11 +147,11 @@ bool moveBlock(HWND hWnd, int blockX, int blockY, int nextX, int nextY) {
 	return true;
 }
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-	switch (message) {
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
+	switch(message){
 	case WM_LBUTTONDOWN:
 	{
-		if (!isPlaying) {
+		if(!isPlaying){
 			break;
 		}
 
@@ -161,13 +161,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		int blockX = curX / BLOCK_WIDTH;
 		int blockY = curY / BLOCK_HEIGHT;
 
-		moveBlock(hWnd, blockX, blockY, blockX - 1, blockY); // ìƒ
-		moveBlock(hWnd, blockX, blockY, blockX + 1, blockY); // í•˜
-		moveBlock(hWnd, blockX, blockY, blockX, blockY - 1); // ì¢Œ
-		moveBlock(hWnd, blockX, blockY, blockX, blockY + 1); // ìš°
+		moveBlock(hWnd, blockX, blockY, blockX - 1, blockY); // »ó
+		moveBlock(hWnd, blockX, blockY, blockX + 1, blockY); // ÇÏ
+		moveBlock(hWnd, blockX, blockY, blockX, blockY - 1); // ÁÂ
+		moveBlock(hWnd, blockX, blockY, blockX, blockY + 1); // ¿ì
 
-		if (isClear()) {
-			MessageBox(hWnd, L"ê²Œìž„ì„ í´ë¦¬ì–´ í•˜ì…¨ìŠµë‹ˆë‹¤!", L"ì•Œë¦¼", MB_OK);
+		if(isClear()){
+			MessageBox(hWnd, L"°ÔÀÓÀ» Å¬¸®¾î ÇÏ¼Ì½À´Ï´Ù!", L"¾Ë¸²", MB_OK);
 
 			isPlaying = false;
 
@@ -179,15 +179,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_COMMAND:
 	{
 		int wmId = LOWORD(wParam);
-		switch (wmId) {
+		switch(wmId){
 		case IDM_ABOUT:
-		{
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-		}
-		break;
-		case IDM_START: 
+			break;
+		case IDM_START:
 		{
-			if (isPlaying && MessageBox(hWnd, L"ë‹¤ì‹œ ì‹œìž‘í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", L"ì•Œë¦¼", MB_YESNO) == IDNO) {
+			if (isPlaying && MessageBox(hWnd, L"´Ù½Ã ½ÃÀÛÇÏ½Ã°Ú½À´Ï±î?", L"¾Ë¸²", MB_YESNO) == IDNO) {
 				break;
 			}
 
@@ -207,10 +205,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		}
 		break;
 		case IDM_EXIT:
-		{
 			DestroyWindow(hWnd);
-		}
-		break;
+			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
@@ -221,37 +217,41 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
 
-		if (!isPlaying) {
-			DrawBitmap(hInst, hdc, IMG_COMPLETE, 0, 0, IMG_WIDTH, IMG_HEIGHT);
+		if(!isPlaying){
+			DrawBitmap(hInst, hdc, IDB_BITMAP_COMPLETE, 0, 0, IMG_WIDTH, IMG_HEIGHT);
 			break;
 		}
 
-		for (int i = 0; i < sizeof(block) / sizeof(block[0]); i++) {
-			for (int j = 0; j < sizeof(block[0]) / sizeof(block[0][0]); j++) {
+		for(int i = 0; i < sizeof(block) / sizeof(block[0]); i++){
+			for(int j = 0; j < sizeof(block[0]) / sizeof(block[0][0]); j++){
 				DrawBitmap(hInst, hdc, block[i][j], BLOCK_WIDTH * j, BLOCK_HEIGHT * i, BLOCK_WIDTH, BLOCK_HEIGHT);
 			}
 		}
-		
+
 		EndPaint(hWnd, &ps);
 	}
 	break;
 	case WM_DESTROY:
+	{
 		PostQuitMessage(0);
-		break;
+	}
+	break;
 	default:
+	{
 		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
 	}
 	return 0;
 }
 
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam){
 	UNREFERENCED_PARAMETER(lParam);
-	switch (message) {
+	switch(message){
 	case WM_INITDIALOG:
 		return (INT_PTR)TRUE;
 
 	case WM_COMMAND:
-		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL) {
+		if(LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL){
 			EndDialog(hDlg, LOWORD(wParam));
 			return (INT_PTR)TRUE;
 		}

@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{307568DD-1FD2-4761-A450-CC5CFB6D736E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My009</RootNamespace>
+    <ProjectGuid>{8ffec0b0-41a1-452c-9665-67484740c740}</ProjectGuid>
+    <RootNamespace>SlidingPuzzleGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -73,19 +73,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -96,24 +94,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -128,10 +110,20 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -147,33 +139,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="009.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DrawBitmap.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Sliding-Puzzle-Game.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="009.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DrawBitmap.cpp" />
+    <ClCompile Include="Sliding-Puzzle-Game.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="009.rc" />
+    <ResourceCompile Include="Sliding-Puzzle-Game.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="009.ico" />
-    <Image Include="res\IMG_BLANK.bmp" />
-    <Image Include="res\IMG_COMPLETE.bmp" />
-    <Image Include="res\IMG_001.bmp" />
-    <Image Include="res\IMG_002.bmp" />
-    <Image Include="res\IMG_003.bmp" />
-    <Image Include="res\IMG_004.bmp" />
-    <Image Include="res\IMG_005.bmp" />
-    <Image Include="res\IMG_006.bmp" />
-    <Image Include="res\IMG_007.bmp" />
-    <Image Include="res\IMG_008.bmp" />
+    <Image Include="Asset\IDB_BITMAP_001.bmp" />
+    <Image Include="Asset\IDB_BITMAP_002.bmp" />
+    <Image Include="Asset\IDB_BITMAP_003.bmp" />
+    <Image Include="Asset\IDB_BITMAP_004.bmp" />
+    <Image Include="Asset\IDB_BITMAP_005.bmp" />
+    <Image Include="Asset\IDB_BITMAP_006.bmp" />
+    <Image Include="Asset\IDB_BITMAP_007.bmp" />
+    <Image Include="Asset\IDB_BITMAP_008.bmp" />
+    <Image Include="Asset\IDB_BITMAP_BLANK.bmp" />
+    <Image Include="Asset\IDB_BITMAP_COMPLETE.bmp" />
+    <Image Include="Sliding-Puzzle-Game.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
