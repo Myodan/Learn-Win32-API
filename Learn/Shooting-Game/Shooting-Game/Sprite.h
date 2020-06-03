@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Sprite : public GameObject{
+class Sprite : public GameObject {
 private:
 	Image *sprite;
 

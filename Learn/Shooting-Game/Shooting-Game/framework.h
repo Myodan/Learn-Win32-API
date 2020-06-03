@@ -1,7 +1,3 @@
-// header.h : include file for standard system include files,
-// or project specific include files
-//
-
 #pragma once
 
 #include "targetver.h"
@@ -25,5 +21,9 @@
 #include "Sprite.h"
 #include "Background.h"
 #include "Player.h"
+#include "PlayerBullet.h"
 
 #include "ObjectManager.h"
+
+#define BG_WIDTH 480
+#define BG_HEIGHT 800

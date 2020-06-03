@@ -3,9 +3,6 @@
 
 #define MAX_LOADSTRING 100
 
-#define BG_WIDTH 480
-#define BG_HEIGHT 800
-
 HINSTANCE hInst;
 HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];
@@ -19,7 +16,7 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPWSTR    lpCmdLine,
-	_In_ int       nCmdShow){
+	_In_ int       nCmdShow) {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -29,7 +26,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	LoadStringW(hInstance, IDC_SHOOTINGGAME, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
-	if(!InitInstance(hInstance, nCmdShow)){
+	if (!InitInstance(hInstance, nCmdShow)) {
 		return FALSE;
 	}
 
@@ -41,15 +38,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	Timer::Init();
 
 	ObjectManager::Add(new Background("Background", "Backgriund", true, 0, 0));
-	ObjectManager::Add(new Player("Player", "Player", true, 0, 0, 100.0f));
+	float x = BG_WIDTH / 2 - 62 / 2, y = BG_HEIGHT / 2 - 80 / 2;
+	ObjectManager::Add(new Player("Player", "Player", true, x, y, 200.0f, 0.15f));
 
-	while(true){
-		if(PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)){
+	while (true) {
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 
-		if(msg.message == WM_QUIT){
+		if (msg.message == WM_QUIT) {
 			break;
 		}
 
@@ -69,7 +67,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	return (int)msg.wParam;
 }
 
-ATOM MyRegisterClass(HINSTANCE hInstance){
+ATOM MyRegisterClass(HINSTANCE hInstance) {
 	WNDCLASSEXW wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -89,7 +87,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance){
 	return RegisterClassExW(&wcex);
 }
 
-BOOL InitInstance(HINSTANCE hInstance, int nCmdShow){
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow) {
 	hInst = hInstance;
 
 	RECT rect = { 0, 0, BG_WIDTH, BG_HEIGHT };
@@ -108,17 +106,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow){
 		szWindowClass,
 		szTitle,
 		WS_OVERLAPPED | WS_SYSMENU | WS_CAPTION,
-		wndX, 
-		wndY, 
-		wndWidth, 
+		wndX,
+		wndY,
+		wndWidth,
 		wndHeight,
-		nullptr, 
+		nullptr,
 		nullptr,
 		hInstance,
 		nullptr
 	);
 
-	if(!hWnd){
+	if (!hWnd) {
 		return FALSE;
 	}
 
@@ -128,8 +126,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow){
 	return TRUE;
 }
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam){
-	switch(message){
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+	switch (message) {
 	case WM_PAINT:
 	{
 		PAINTSTRUCT ps;

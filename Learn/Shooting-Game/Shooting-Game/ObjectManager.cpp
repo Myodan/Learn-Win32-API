@@ -2,44 +2,44 @@
 
 vector<GameObject *> ObjectManager::objs;
 
-ObjectManager::ObjectManager(){
+ObjectManager::ObjectManager() {
 	objs = vector<GameObject *>();
 }
 
-ObjectManager::~ObjectManager(){
+ObjectManager::~ObjectManager() {
 
 }
 
-void ObjectManager::Init(){
+void ObjectManager::Init() {
 	objs.clear();
 }
 
-void ObjectManager::Update(){
-	for(int i = 0; i < objs.size(); i++){
+void ObjectManager::Update() {
+	for (int i = 0; i < objs.size(); i++) {
 		objs.at(i)->Update();
 	}
 }
 
-void ObjectManager::Draw(){
-	for(int i = 0; i < objs.size(); i++){
+void ObjectManager::Draw() {
+	for (int i = 0; i < objs.size(); i++) {
 		objs.at(i)->Draw();
 	}
 }
 
-void ObjectManager::Exit(){
-	for(int i = 0; i < objs.size(); i++){
+void ObjectManager::Exit() {
+	for (int i = 0; i < objs.size(); i++) {
 		delete objs.at(i);
 	}
 }
 
-void ObjectManager::Add(GameObject *_obj){
+void ObjectManager::Add(GameObject *_obj) {
 	objs.push_back(_obj);
 	_obj->Start();
 }
 
-void ObjectManager::Delete(GameObject *_obj){
-	for(int i = 0; i < objs.size(); i++){
-		if(objs.at(i) != _obj){
+void ObjectManager::Delete(GameObject *_obj) {
+	for (int i = 0; i < objs.size(); i++) {
+		if (objs.at(i) != _obj) {
 			continue;
 		}
 

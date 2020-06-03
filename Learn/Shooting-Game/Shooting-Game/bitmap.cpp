@@ -1,6 +1,6 @@
 ﻿#include "framework.h"
 
-int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int height){
+int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int height) {
 	BITMAPFILEHEADER *fileHeader = new BITMAPFILEHEADER();
 	BITMAPINFOHEADER *infoHeader = new BITMAPINFOHEADER();
 
@@ -8,7 +8,7 @@ int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int heig
 	errno_t errno;
 	errno = fopen_s(&stream, path, "rb");
 
-	if(errno != 0){
+	if (errno != 0) {
 		printf("ERROR: 파일 로드 중 에러가 발생했습니다. (%d)\n", errno);
 		return errno;
 	}
@@ -16,12 +16,12 @@ int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int heig
 	fread(fileHeader, sizeof(BITMAPFILEHEADER), 1, stream);
 	fread(infoHeader, sizeof(BITMAPINFOHEADER), 1, stream);
 
-	if(fileHeader->bfType != 0x4D42){
+	if (fileHeader->bfType != 0x4D42) {
 		printf("ERROR: 올바른 비트맵 파일이 아닙니다.\n");
 		return -1;
 	}
 
-	if(infoHeader->biBitCount != 32){
+	if (infoHeader->biBitCount != 32) {
 		printf("ERROR: 32bit 비트맵 파일이 아닙니다.\n");
 		return -1;
 	}
@@ -40,12 +40,10 @@ int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int heig
 	// [3] 이미지를...읽어면서..이동할...간격
 	int gap = (infoHeader->biWidth - width) * 4;
 
-	std::cout << gap << endl;
-
 	// [4] 이미지 로드하기
 	unsigned int *ptr = img->argb;
 
-	for(int i = 0; i < height; i++){
+	for (int i = 0; i < height; i++) {
 		fread(ptr, sizeof(unsigned int), width, stream);
 		fseek(stream, gap, SEEK_CUR);
 
@@ -61,7 +59,7 @@ int MyLoadBitmap(Image *img, const char *path, int x, int y, int width, int heig
 	return 0;
 }
 
-int MyLoadBitmap(Image *img, const char *path){
+int MyLoadBitmap(Image *img, const char *path) {
 	BITMAPFILEHEADER *fileHeader = new BITMAPFILEHEADER();
 	BITMAPINFOHEADER *infoHeader = new BITMAPINFOHEADER();
 
@@ -69,7 +67,7 @@ int MyLoadBitmap(Image *img, const char *path){
 	errno_t errno;
 	errno = fopen_s(&stream, path, "rb");
 
-	if(errno != 0){
+	if (errno != 0) {
 		printf("ERROR: 파일 로드 중 에러가 발생했습니다. (%d)\n", errno);
 		return errno;
 	}
@@ -77,12 +75,12 @@ int MyLoadBitmap(Image *img, const char *path){
 	fread(fileHeader, sizeof(BITMAPFILEHEADER), 1, stream);
 	fread(infoHeader, sizeof(BITMAPINFOHEADER), 1, stream);
 
-	if(fileHeader->bfType != 0x4D42){
+	if (fileHeader->bfType != 0x4D42) {
 		printf("ERROR: 올바른 비트맵 파일이 아닙니다.\n");
 		return -1;
 	}
 
-	if(infoHeader->biBitCount != 32){
+	if (infoHeader->biBitCount != 32) {
 		printf("ERROR: 32bit 비트맵 파일이 아닙니다.\n");
 		return -1;
 	}
@@ -103,7 +101,7 @@ int MyLoadBitmap(Image *img, const char *path){
 	return 0;
 }
 
-void MyDrawBitmap(Image *img, float px, float py){
+void MyDrawBitmap(Image *img, float px, float py) {
 	//이미지 뒤집어서 불러오기
 	//for(int y = img->height - 1, i = 0; y > 0; y--, i++){
 	//	for(int x = 0; x < img->width; x++){
@@ -111,8 +109,8 @@ void MyDrawBitmap(Image *img, float px, float py){
 	//	}
 	//}
 
-	for(int y = 0; y < img->height; y++){
-		for(int x = 0; x < img->width; x++){
+	for (int y = 0; y < img->height; y++) {
+		for (int x = 0; x < img->width; x++) {
 			SetPixel(x + px, y + py, img->argb[y * img->width + x]);
 		}
 	}

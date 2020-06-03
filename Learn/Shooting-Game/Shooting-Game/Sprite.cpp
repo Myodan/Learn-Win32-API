@@ -10,7 +10,6 @@ Sprite::Sprite(string _tag, string _name, bool _active, float _posX, float _posY
 
 Sprite::~Sprite(){
 	delete[] sprite->argb;
-	delete sprite;
 }
 
 Image *Sprite::GetSprite(){

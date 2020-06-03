@@ -16,6 +16,6 @@ public:
 	static void Update();
 	static void Draw();
 	static void Exit();
-	static void Add(GameObject * _obj);
-	static void Delete(GameObject * _obj);
+	static void Add(GameObject *_obj);
+	static void Delete(GameObject *_obj);
 };
