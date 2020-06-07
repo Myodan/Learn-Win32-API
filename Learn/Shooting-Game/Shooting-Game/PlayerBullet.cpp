@@ -3,11 +3,13 @@
 PlayerBullet::PlayerBullet() : Sprite() {
 	speed = NULL;
 	index = NULL;
+	type = NULL;
 }
 
-PlayerBullet::PlayerBullet(string _tag, string _name, bool _active, float _posX, float _posY, float _speed) : Sprite(_tag, _name, _active, _posX, _posY) {
+PlayerBullet::PlayerBullet(string _tag, string _name, bool _active, float _posX, float _posY, float _speed, int _type) : Sprite(_tag, _name, _active, _posX, _posY) {
 	speed = _speed;
 	index = 0;
+	type = _type;
 }
 
 PlayerBullet::~PlayerBullet() {
@@ -33,5 +35,23 @@ void PlayerBullet::Update() {
 	}
 
 	float dist = speed * Timer::GetDeltaTime();
-	Translate(0, -dist);
+
+	switch (type) {
+	case 1:
+	{
+		Translate(0, -dist);
+	}
+	break;
+	case 2:
+	{
+		Translate(-dist / 5, -dist);
+	}
+	break;
+	case 3:
+	{
+		Translate(dist / 5, -dist);
+	}
+	break;
+	}
+	
 }

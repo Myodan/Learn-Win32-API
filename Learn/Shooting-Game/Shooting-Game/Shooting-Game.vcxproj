@@ -139,15 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Ayako.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="graphic.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerBullet.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Shooting-Game.h" />
     <ClInclude Include="Sprite.h" />
@@ -155,14 +159,18 @@
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Ayako.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="bitmap.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="graphic.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerBullet.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Shooting-Game.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Timer.cpp" />

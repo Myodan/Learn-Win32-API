@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "framework.h"
 
 char Input::keyState[255] = { upRep, };
 

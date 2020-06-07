@@ -16,12 +16,17 @@
 #include "graphic.h"
 #include "bitmap.h"
 
+#include "Input.h"
 #include "Timer.h"
+#include "Random.h"
+
 #include "GameObject.h"
 #include "Sprite.h"
+#include "Animation.h"
 #include "Background.h"
 #include "Player.h"
 #include "PlayerBullet.h"
+#include "Ayako.h"
 
 #include "ObjectManager.h"
 

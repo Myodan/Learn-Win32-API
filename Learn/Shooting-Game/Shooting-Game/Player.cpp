@@ -38,7 +38,7 @@ void Player::Update() {
 void Player::Move() {
 	float dist = speed * Timer::GetDeltaTime();
 
-	if (GetAsyncKeyState(VK_RIGHT) != 0) {
+	if (Input::GetKey(VK_RIGHT)) {
 		if (index < 6) {
 			index++;
 		}
@@ -48,7 +48,7 @@ void Player::Move() {
 		}
 	}
 
-	if (GetAsyncKeyState(VK_LEFT) != 0) {
+	if (Input::GetKey(VK_LEFT)) {
 		if (index > 0) {
 			index--;
 		}
@@ -59,19 +59,19 @@ void Player::Move() {
 
 	}
 
-	if (GetAsyncKeyState(VK_DOWN) != 0) {
+	if (Input::GetKey(VK_DOWN)) {
 		if (GetPosY() <= BG_HEIGHT - 80) {
 			Translate(0, dist);
 		}
 	}
 
-	if (GetAsyncKeyState(VK_UP) != 0) {
+	if (Input::GetKey(VK_UP)) {
 		if (GetPosY() >= 0) {
 			Translate(0, -dist);
 		}
 	}
 
-	if (GetAsyncKeyState(VK_RIGHT) == 0 && GetAsyncKeyState(VK_LEFT) == 0) {
+	if (Input::GetKey(VK_RIGHT) == false && Input::GetKey(VK_LEFT) == false) {
 		if (index > 3) {
 			index--;
 		}
@@ -87,9 +87,11 @@ void Player::Move() {
 }
 
 void Player::Fire() {
-	if (GetAsyncKeyState(VK_SPACE) != 0) {
+	if (Input::GetKey(VK_SPACE)) {
 		if (fireTimer >= fireDelay) {
-			ObjectManager::Add(new PlayerBullet("Bullet", "Bullet", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 400.0f));
+			ObjectManager::Add(new PlayerBullet("Bullet", "BulletC", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 1));
+			ObjectManager::Add(new PlayerBullet("Bullet", "BulletL", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 2));
+			ObjectManager::Add(new PlayerBullet("Bullet", "BulletR", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 3));
 			fireTimer = 0;
 		}
 	}

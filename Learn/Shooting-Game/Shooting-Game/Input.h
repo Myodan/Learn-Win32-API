@@ -2,8 +2,6 @@
 
 #include <windows.h>
 
-
-
 class Input {
 private:
 	static char keyState[255];
