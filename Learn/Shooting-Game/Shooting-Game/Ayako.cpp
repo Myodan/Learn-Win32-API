@@ -14,6 +14,7 @@ Ayako::~Ayako() {
 void Ayako::Start() {
 	SetSpriteSet(CreateImgSet("Asset/Àû±â1.bmp", 2, 1, { 0, 280, 200, 420 }, { 1, 1, 9, 2 }));
 	downPosY = downPosY + Random::Range(-50, 50);
+	AddBoxCollider(0, 0, 190, 137);
 }
 
 void Ayako::Update() {
@@ -38,7 +39,7 @@ void Ayako::Update() {
 
 		Translate(0, d);
 		if (GetPosY() > downPosY) {
-			state = (State) Random::Range(1, 2);
+			state = (State)Random::Range(1, 2);
 		}
 	}
 }

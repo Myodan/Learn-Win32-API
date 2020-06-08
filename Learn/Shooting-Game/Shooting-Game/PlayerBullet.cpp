@@ -22,6 +22,7 @@ void PlayerBullet::Start() {
 	}
 
 	SetSprite(&image[0]);
+	AddBoxCollider(3, 10, 10, 35);
 }
 
 void PlayerBullet::Update() {

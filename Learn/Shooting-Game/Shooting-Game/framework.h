@@ -20,6 +20,8 @@
 #include "Timer.h"
 #include "Random.h"
 
+#include "BoxCollider.h"
+
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Animation.h"

@@ -1,9 +1,10 @@
 #include "framework.h"
 
-vector<GameObject *> ObjectManager::objs;
+vector<GameObject *> ObjectManager::objs = vector<GameObject *>();
+bool ObjectManager::isDrawCollider = false;
 
 ObjectManager::ObjectManager() {
-	objs = vector<GameObject *>();
+
 }
 
 ObjectManager::~ObjectManager() {
@@ -18,11 +19,18 @@ void ObjectManager::Update() {
 	for (int i = 0; i < objs.size(); i++) {
 		objs.at(i)->Update();
 	}
+
+	if (Input::GetKeyDown(VK_F1)) {
+		isDrawCollider = !isDrawCollider;
+	}
 }
 
 void ObjectManager::Draw() {
 	for (int i = 0; i < objs.size(); i++) {
 		objs.at(i)->Draw();
+		if (isDrawCollider) {
+			objs.at(i)->DrawCollider();
+		}
 	}
 }
 

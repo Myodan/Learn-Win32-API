@@ -143,6 +143,7 @@
     <ClInclude Include="Ayako.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="bitmap.h" />
+    <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameObject.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Ayako.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="bitmap.cpp" />
+    <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="graphic.cpp" />

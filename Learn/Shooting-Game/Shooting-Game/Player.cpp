@@ -24,6 +24,7 @@ void Player::Start() {
 	}
 
 	SetSprite("Asset/∆“≈“¿Ãµø2.bmp", 192, 62, 62, 80);
+	AddBoxCollider(10, 8, 42, 60);
 }
 
 void Player::Update() {

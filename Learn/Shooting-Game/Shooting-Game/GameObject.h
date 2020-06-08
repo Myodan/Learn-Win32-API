@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#include "BoxCollider.h"
+
 using namespace std;
 
 class GameObject {
@@ -12,6 +14,7 @@ private:
 	bool active;
 	float posX;
 	float posY;
+	BoxCollider collider;
 
 public:
 	GameObject();
@@ -24,9 +27,13 @@ public:
 	float GetPosX();
 	float GetPosY();
 
+	void AddBoxCollider(float x, float y, float width, float height);
+
 	virtual void Start();
 	virtual	void Update();
 	virtual void Draw();
+
+	virtual void DrawCollider();
 
 	void Translate(float _deltaX, float _deltaY);
 };

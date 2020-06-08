@@ -7,6 +7,7 @@
 class ObjectManager {
 private:
 	static vector<GameObject *> objs;
+	static bool isDrawCollider;
 
 public:
 	ObjectManager();
