@@ -26,6 +26,7 @@ public:
 	bool GetActive();
 	float GetPosX();
 	float GetPosY();
+	BoxCollider GetCollider();
 
 	void AddBoxCollider(float x, float y, float width, float height);
 
@@ -36,4 +37,6 @@ public:
 	virtual void DrawCollider();
 
 	void Translate(float _deltaX, float _deltaY);
+
+	virtual void OnTrriger();
 };

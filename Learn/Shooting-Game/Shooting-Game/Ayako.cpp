@@ -3,7 +3,7 @@
 Ayako::Ayako(string _tag, string _name, bool _active, float _posX, float _posY, float _animDelay) :
 	Animation(_tag, _name, _active, _posX, _posY, _animDelay) {
 	state = down;
-	speed = 100.0f;
+	speed = 0.0f; //100.0f;
 	downPosY = 80;
 }
 
@@ -42,4 +42,8 @@ void Ayako::Update() {
 			state = (State)Random::Range(1, 2);
 		}
 	}
+}
+
+void Ayako::OnTrriger() {
+
 }

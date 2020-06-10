@@ -99,3 +99,7 @@ void Player::Fire() {
 
 	fireTimer += Timer::GetDeltaTime();
 }
+
+void Player::OnTrriger() {
+
+}

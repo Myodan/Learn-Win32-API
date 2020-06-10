@@ -17,4 +17,5 @@ public:
 	void Start();
 	void Update();
 
+	void OnTrriger();
 };

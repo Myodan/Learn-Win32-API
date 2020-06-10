@@ -22,6 +22,8 @@ public:
 	void Start();
 	void Update();
 
+	void OnTrriger();
+
 	void Move();
 	void Fire();
 };

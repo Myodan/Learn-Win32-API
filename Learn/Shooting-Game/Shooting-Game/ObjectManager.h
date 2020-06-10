@@ -19,4 +19,5 @@ public:
 	static void Exit();
 	static void Add(GameObject *_obj);
 	static void Delete(GameObject *_obj);
+	static void CheckCollision();
 };

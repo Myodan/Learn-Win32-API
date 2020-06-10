@@ -56,3 +56,33 @@ void ObjectManager::Delete(GameObject *_obj) {
 		break;
 	}
 }
+
+void ObjectManager::CheckCollision() {
+	for (int i = 0; i < objs.size(); i++) {
+		for (int j = 0; j < objs.size(); j++) {
+			if (j > i) {
+				GameObject * iObj = objs.at(i);
+				GameObject * jObj = objs.at(j);
+
+				BoxCollider iObjCollider = iObj->GetCollider();
+				BoxCollider jObjCollider = jObj->GetCollider();
+
+				float a = objs.at(i)->GetPosX();
+				float b = objs.at(i)->GetPosY();
+				float c = a + iObjCollider.GetWidth();
+				float d = b + iObjCollider.GetHeight();
+
+				float A = objs.at(j)->GetPosX();
+				float B = objs.at(j)->GetPosY();
+				float C = A + jObjCollider.GetWidth();
+				float D = B + jObjCollider.GetHeight();
+
+				if (B < d && D > b && C > a && A < c) {
+					iObj->OnTrriger();
+					jObj->OnTrriger();
+				}
+				
+			}
+		}
+	}
+}

@@ -41,6 +41,10 @@ float GameObject::GetPosY() {
 	return posY;
 }
 
+BoxCollider GameObject::GetCollider() {
+	return collider;
+}
+
 void GameObject::Start() {
 
 }
@@ -72,4 +76,8 @@ void GameObject::DrawCollider() {
 	float y1 = y0 + collider.GetHeight();
 
 	DrawRect(x0, y0, x1, y1, 100, 255, 100);
+}
+
+void GameObject::OnTrriger() {
+	cout << "±âº»" << endl;
 }

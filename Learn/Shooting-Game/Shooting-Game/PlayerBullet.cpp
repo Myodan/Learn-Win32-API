@@ -56,3 +56,7 @@ void PlayerBullet::Update() {
 	}
 	
 }
+
+void PlayerBullet::OnTrriger() {
+
+}
