@@ -100,6 +100,6 @@ void Player::Fire() {
 	fireTimer += Timer::GetDeltaTime();
 }
 
-void Player::OnTrriger() {
+void Player::OnTrriger(GameObject * other) {
 
 }

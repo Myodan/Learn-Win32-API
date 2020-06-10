@@ -17,5 +17,5 @@ public:
 	void Start();
 	void Update();
 
-	void OnTrriger();
+	void OnTrriger(GameObject * other);
 };

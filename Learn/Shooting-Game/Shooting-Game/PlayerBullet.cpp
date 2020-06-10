@@ -57,6 +57,6 @@ void PlayerBullet::Update() {
 	
 }
 
-void PlayerBullet::OnTrriger() {
+void PlayerBullet::OnTrriger(GameObject * other) {
 
 }

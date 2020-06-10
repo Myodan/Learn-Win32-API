@@ -38,5 +38,5 @@ public:
 
 	void Translate(float _deltaX, float _deltaY);
 
-	virtual void OnTrriger();
+	virtual void OnTrriger(GameObject * other);
 };

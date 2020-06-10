@@ -78,6 +78,6 @@ void GameObject::DrawCollider() {
 	DrawRect(x0, y0, x1, y1, 100, 255, 100);
 }
 
-void GameObject::OnTrriger() {
+void GameObject::OnTrriger(GameObject * other) {
 	cout << "±âº»" << endl;
 }

@@ -44,6 +44,6 @@ void Ayako::Update() {
 	}
 }
 
-void Ayako::OnTrriger() {
+void Ayako::OnTrriger(GameObject * other) {
 
 }
