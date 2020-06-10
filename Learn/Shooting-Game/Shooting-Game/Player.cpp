@@ -15,7 +15,7 @@ Player::Player(string _tag, string _name, bool _active, float _posX, float _posY
 }
 
 Player::~Player() {
-
+	cout << "Delect Player" << endl;
 }
 
 void Player::Start() {
@@ -90,9 +90,9 @@ void Player::Move() {
 void Player::Fire() {
 	if (Input::GetKey(VK_SPACE)) {
 		if (fireTimer >= fireDelay) {
-			ObjectManager::Add(new PlayerBullet("Bullet", "BulletC", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 1));
-			ObjectManager::Add(new PlayerBullet("Bullet", "BulletL", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 2));
-			ObjectManager::Add(new PlayerBullet("Bullet", "BulletR", true, GetPosX() + 23.0f, GetPosY() - 20.0f, 650.0f, 3));
+			ObjectManager::Instantiate(new PlayerBullet("Bullet", "BulletC", true, GetPosX() + 8.0f, GetPosY() - 40.0f, 650.0f, 1));
+			ObjectManager::Instantiate(new PlayerBullet("Bullet", "BulletL", true, GetPosX() + 23.0f, GetPosY() - 40.0f, 650.0f, 2));
+			ObjectManager::Instantiate(new PlayerBullet("Bullet", "BulletR", true, GetPosX() + 38.0f, GetPosY() - 40.0f, 650.0f, 3));
 			fireTimer = 0;
 		}
 	}
@@ -101,5 +101,7 @@ void Player::Fire() {
 }
 
 void Player::OnTrriger(GameObject * other) {
-
+	if (other->GetTag() == "Enemy") {
+		ObjectManager::Destroy(this);
+	}
 }

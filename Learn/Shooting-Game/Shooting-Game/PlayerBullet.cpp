@@ -27,7 +27,7 @@ void PlayerBullet::Start() {
 
 void PlayerBullet::Update() {
 	if (GetPosY() <= -30.0f) {
-		ObjectManager::Delete(this);
+		ObjectManager::Destroy(this);
 		return;
 	}
 
@@ -40,12 +40,12 @@ void PlayerBullet::Update() {
 	switch (type) {
 	case 1:
 	{
-		Translate(0, -dist);
+		Translate(-dist / 5, -dist);
 	}
 	break;
 	case 2:
 	{
-		Translate(-dist / 5, -dist);
+		Translate(0, -dist);
 	}
 	break;
 	case 3:
@@ -58,5 +58,7 @@ void PlayerBullet::Update() {
 }
 
 void PlayerBullet::OnTrriger(GameObject * other) {
-
+	if (other->GetTag() == "Enemy") {
+		ObjectManager::Destroy(this);
+	}
 }

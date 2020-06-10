@@ -6,6 +6,7 @@ GameObject::GameObject() {
 	active = 0;
 	posX = 0;
 	posY = 0;
+	alive = true;
 }
 
 
@@ -15,6 +16,7 @@ GameObject::GameObject(string _tag, string _name, bool _active, float _posX, flo
 	active = _active;
 	posX = _posX;
 	posY = _posY;
+	alive = true;
 }
 
 GameObject::~GameObject() {
@@ -33,12 +35,20 @@ bool GameObject::GetActive() {
 	return active;
 }
 
+bool GameObject::GetAlive() {
+	return alive;
+}
+
 float GameObject::GetPosX() {
 	return posX;
 }
 
 float GameObject::GetPosY() {
 	return posY;
+}
+
+void GameObject::SetDead() {
+	alive = false;
 }
 
 BoxCollider GameObject::GetCollider() {
@@ -75,9 +85,9 @@ void GameObject::DrawCollider() {
 	float x1 = x0 + collider.GetWidth();
 	float y1 = y0 + collider.GetHeight();
 
-	DrawRect(x0, y0, x1, y1, 100, 255, 100);
+	DrawRect((int)x0, (int)y0, (int)x1, (int)y1, 100, 255, 100);
 }
 
 void GameObject::OnTrriger(GameObject * other) {
-	cout << "±âº»" << endl;
+	
 }

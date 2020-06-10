@@ -111,7 +111,7 @@ void MyDrawBitmap(Image *img, float px, float py) {
 
 	for (int y = 0; y < img->height; y++) {
 		for (int x = 0; x < img->width; x++) {
-			SetPixel(x + px, y + py, img->argb[y * img->width + x]);
+			SetPixel(x + (int)px, y + (int)py, img->argb[y * img->width + x]);
 		}
 	}
 }

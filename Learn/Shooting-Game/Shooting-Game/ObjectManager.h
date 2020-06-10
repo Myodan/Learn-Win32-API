@@ -17,7 +17,8 @@ public:
 	static void Update();
 	static void Draw();
 	static void Exit();
-	static void Add(GameObject *_obj);
-	static void Delete(GameObject *_obj);
+	static void Instantiate(GameObject *_obj);
+	static void Destroy(GameObject *_obj);
 	static void CheckCollision();
+	static void DestoryExe();
 };

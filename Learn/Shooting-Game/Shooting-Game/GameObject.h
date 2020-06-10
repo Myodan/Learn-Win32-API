@@ -12,6 +12,7 @@ private:
 	string tag;
 	string name;
 	bool active;
+	bool alive;
 	float posX;
 	float posY;
 	BoxCollider collider;
@@ -24,9 +25,12 @@ public:
 	string GetTag();
 	string GetName();
 	bool GetActive();
+	bool GetAlive();
 	float GetPosX();
 	float GetPosY();
 	BoxCollider GetCollider();
+
+	void SetDead();
 
 	void AddBoxCollider(float x, float y, float width, float height);
 
