@@ -37,14 +37,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	InitGraphic(hWnd, 0, 0, BG_WIDTH, BG_HEIGHT);
 	Random::Init();
 
-	//ObjectManager::Add(new Background("Background", "Backgriund", true, 0, 0));
+	ObjectManager::Instantiate(new Background("Background", "Backgriund", true, 0, 0));
 	float x = BG_WIDTH / 2 - 62 / 2, y = BG_HEIGHT / 2 - 80 / 2;
 	ObjectManager::Instantiate(new Player("Player", "Player", true, x, y, 200.0f, 0.15f));
 
-	//ObjectManager::Add(new Ayako("Enemy", "Ayako", true, 100, -100, 0.1f));
-	//ObjectManager::Add(new Ayako("Enemy", "Ayako", true, 200, -150, 0.1f));
-	//ObjectManager::Add(new Ayako("Enemy", "Ayako", true, 300, -250, 0.1f));
-	ObjectManager::Instantiate(new Ayako("Enemy", "Ayako", true, 150, 200, 0.1f));
+	ObjectManager::Instantiate(new Ayako("Enemy", "Ayako", true, 100, -100, 0.1f));
+	ObjectManager::Instantiate(new Ayako("Enemy", "Ayako", true, 200, -150, 0.1f));
+	ObjectManager::Instantiate(new Ayako("Enemy", "Ayako", true, 300, -250, 0.1f));
+	//ObjectManager::Instantiate(new Ayako("Enemy", "Ayako", true, 150, 200, 0.1f));
 
 	while (true) {
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {

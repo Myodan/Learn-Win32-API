@@ -7,6 +7,7 @@ private:
 	enum State { down = 0, left = 1, right = 2 };
 	State state;
 
+	float health;
 	float speed;
 	float downPosY;
 

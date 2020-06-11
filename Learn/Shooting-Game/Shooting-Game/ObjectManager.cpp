@@ -62,29 +62,40 @@ void ObjectManager::Destroy(GameObject * obj) {
 void ObjectManager::CheckCollision() {
 	for (int i = 0; i < objs.size(); i++) {
 		for (int j = 0; j < objs.size(); j++) {
-			if (i >= j) {
+			if (i < j) {
 				continue;
 			}
 
 			GameObject * iObj = objs.at(i);
 			GameObject * jObj = objs.at(j);
 
-			BoxCollider iObjCollider = iObj->GetCollider();
-			BoxCollider jObjCollider = jObj->GetCollider();
+			vector<BoxCollider *> * iObjCollider = iObj->GetCollider();
+			vector<BoxCollider *> * jObjCollider = jObj->GetCollider();
 
-			float a = objs.at(i)->GetPosX();
-			float b = objs.at(i)->GetPosY();
-			float c = a + iObjCollider.GetWidth();
-			float d = b + iObjCollider.GetHeight();
+			for (int ii = 0; ii < iObjCollider->size(); ii++) {
+				for (int jj = 0; jj < jObjCollider->size(); jj++) {
+					if (ii < jj) {
+						continue;
+					}
 
-			float A = objs.at(j)->GetPosX();
-			float B = objs.at(j)->GetPosY();
-			float C = A + jObjCollider.GetWidth();
-			float D = B + jObjCollider.GetHeight();
+					BoxCollider * iiCollider = iObjCollider->at(ii);
+					BoxCollider * jjCollider = jObjCollider->at(jj);
 
-			if (B < d && D > b && C > a && A < c) {
-				iObj->OnTrriger(jObj);
-				jObj->OnTrriger(iObj);
+					float a = iiCollider->GetX();
+					float b = iiCollider->GetY();
+					float c = a + iiCollider->GetWidth();
+					float d = b + iiCollider->GetHeight();
+
+					float A = jjCollider->GetX();
+					float B = jjCollider->GetY();
+					float C = A + jjCollider->GetWidth();
+					float D = B + jjCollider->GetHeight();
+
+					if (B < d && D > b && C > a && A < c) {
+						iObj->OnTrriger(jObj);
+						jObj->OnTrriger(iObj);
+					}
+				}
 			}
 		}
 	}
@@ -95,6 +106,7 @@ void ObjectManager::DestoryExe() {
 		if (!objs.at(i)->GetAlive()) {
 			delete objs.at(i);
 			objs.erase(objs.begin() + i);
+			i--;
 		}
 	}
 }

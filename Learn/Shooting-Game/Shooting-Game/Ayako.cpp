@@ -3,7 +3,8 @@
 Ayako::Ayako(string _tag, string _name, bool _active, float _posX, float _posY, float _animDelay) :
 	Animation(_tag, _name, _active, _posX, _posY, _animDelay) {
 	state = down;
-	speed = 0.0f; //100.0f;
+	health = 100.0f;
+	speed = 100.0f; //0.0f; //100.0f;
 	downPosY = 80;
 }
 
@@ -14,7 +15,8 @@ Ayako::~Ayako() {
 void Ayako::Start() {
 	SetSpriteSet(CreateImgSet("Asset/Àû±â1.bmp", 2, 1, { 0, 280, 200, 420 }, { 1, 1, 9, 2 }));
 	downPosY = downPosY + Random::Range(-50, 50);
-	AddBoxCollider(0, 10, 190, 130);
+	AddBoxCollider(0, 73, 190, 33);
+	AddBoxCollider(87, 9, 15, 128);
 }
 
 void Ayako::Update() {
@@ -36,7 +38,6 @@ void Ayako::Update() {
 		}
 	}
 	else if (state == down) {
-
 		Translate(0, d);
 		if (GetPosY() > downPosY) {
 			state = (State)Random::Range(1, 2);
@@ -45,5 +46,12 @@ void Ayako::Update() {
 }
 
 void Ayako::OnTrriger(GameObject * other) {
+	if (other->GetTag() == "Bullet") {
+		health -= 10;
 
+		// Ayako Death Event
+		if (health <= 0) {
+			SetDead();
+		}
+	}
 }

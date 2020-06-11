@@ -36,7 +36,7 @@ Image * Animation::CreateImgSet(string path, int numX, int numY, RECT position, 
 			int width = position.right - position.left;
 			int height = position.bottom - position.top;
 
-			cout << position.left + width * j + border.left << ", " << position.top + height * i + border.top << ", " << width - border.right - border.left << ", " << height - border.bottom - border.top << endl;
+			//cout << position.left + width * j + border.left << ", " << position.top + height * i + border.top << ", " << width - border.right - border.left << ", " << height - border.bottom - border.top << endl;
 			MyLoadBitmap(
 				&newImgSet[numX * i + j],
 				path.data(),

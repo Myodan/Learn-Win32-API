@@ -22,7 +22,7 @@ void PlayerBullet::Start() {
 	}
 
 	SetSprite(&image[0]);
-	AddBoxCollider(3, 10, 10, 35);
+	AddBoxCollider(5, 24, 5, 20);
 }
 
 void PlayerBullet::Update() {
@@ -40,7 +40,7 @@ void PlayerBullet::Update() {
 	switch (type) {
 	case 1:
 	{
-		Translate(-dist / 5, -dist);
+		Translate(-dist / 7.5f, -dist);
 	}
 	break;
 	case 2:
@@ -50,7 +50,7 @@ void PlayerBullet::Update() {
 	break;
 	case 3:
 	{
-		Translate(dist / 5, -dist);
+		Translate(dist / 7.5f, -dist);
 	}
 	break;
 	}
@@ -59,6 +59,9 @@ void PlayerBullet::Update() {
 
 void PlayerBullet::OnTrriger(GameObject * other) {
 	if (other->GetTag() == "Enemy") {
+		// Bullet Explosm
+
+		// Bullet Destroy
 		ObjectManager::Destroy(this);
 	}
 }

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "BoxCollider.h"
 
@@ -15,7 +16,7 @@ private:
 	bool alive;
 	float posX;
 	float posY;
-	BoxCollider collider;
+	vector<BoxCollider *> collider;
 
 public:
 	GameObject();
@@ -28,7 +29,7 @@ public:
 	bool GetAlive();
 	float GetPosX();
 	float GetPosY();
-	BoxCollider GetCollider();
+	vector<BoxCollider *> * GetCollider();
 
 	void SetDead();
 

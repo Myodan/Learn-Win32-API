@@ -51,8 +51,8 @@ void GameObject::SetDead() {
 	alive = false;
 }
 
-BoxCollider GameObject::GetCollider() {
-	return collider;
+vector<BoxCollider *> * GameObject::GetCollider() {
+	return &collider;
 }
 
 void GameObject::Start() {
@@ -72,26 +72,34 @@ void GameObject::Draw() {
 void GameObject::Translate(float dx, float dy) {
 	posX += dx;
 	posY += dy;
-	collider.Translate(dx, dy);
+
+	for (int i = 0; i < collider.size(); i++) {
+		BoxCollider * col = collider.at(i);
+		col->Translate(dx, dy);
+	}
 }
 
 void GameObject::AddBoxCollider(float x, float y, float width, float height) {
-	collider = BoxCollider(posX + x, posY + y, width, height);
+	collider.push_back(new BoxCollider(posX + x, posY + y, width, height));
 }
 
 void GameObject::DrawCollider() {
+	for (int i = 0; i < collider.size(); i++) {
 
-	float x = collider.GetX();
-	float y = collider.GetY();
-	float width = collider.GetWidth();
-	float height = collider.GetHeight();
+		BoxCollider * col = collider.at(i);
 
-	float x0 = x; 
-	float y0 = y; 
-	float x1 = x + width;
-	float y1 = y + height;
+		float x = col->GetX();
+		float y = col->GetY();
+		float width = col->GetWidth();
+		float height = col->GetHeight();
 
-	DrawRect(x0, y0, x1, y1, 100, 255, 100);
+		float x0 = x;
+		float y0 = y;
+		float x1 = x + width;
+		float y1 = y + height;
+
+		DrawRect(x0, y0, x1, y1, 100, 255, 100);
+	}
 }
 
 void GameObject::OnTrriger(GameObject * other) {

@@ -15,7 +15,7 @@ Player::Player(string _tag, string _name, bool _active, float _posX, float _posY
 }
 
 Player::~Player() {
-	cout << "Delect Player" << endl;
+
 }
 
 void Player::Start() {
@@ -24,7 +24,8 @@ void Player::Start() {
 	}
 
 	SetSprite("Asset/ÆÒÅÒÀÌµ¿2.bmp", 192, 62, 62, 80);
-	AddBoxCollider(10, 8, 42, 60);
+	AddBoxCollider( 9, 43, 44, 14);
+	AddBoxCollider(27,  8,  8, 65);
 }
 
 void Player::Update() {
