@@ -92,7 +92,7 @@ void ObjectManager::CheckCollision() {
 
 void ObjectManager::DestoryExe() {
 	for (int i = 0; i < objs.size(); i++) {
-		if (objs.at(i)->GetAlive()) {
+		if (!objs.at(i)->GetAlive()) {
 			delete objs.at(i);
 			objs.erase(objs.begin() + i);
 		}

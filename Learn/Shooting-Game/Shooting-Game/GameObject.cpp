@@ -69,23 +69,29 @@ void GameObject::Draw() {
 
 }
 
-void GameObject::Translate(float _deltaX, float _deltaY) {
-	posX += _deltaX;
-	posY += _deltaY;
+void GameObject::Translate(float dx, float dy) {
+	posX += dx;
+	posY += dy;
+	collider.Translate(dx, dy);
 }
 
 void GameObject::AddBoxCollider(float x, float y, float width, float height) {
-	collider = BoxCollider(x, y, width, height);
+	collider = BoxCollider(posX + x, posY + y, width, height);
 }
 
 void GameObject::DrawCollider() {
 
-	float x0 = GetPosX() + collider.GetX();
-	float y0 = GetPosY() + collider.GetY();
-	float x1 = x0 + collider.GetWidth();
-	float y1 = y0 + collider.GetHeight();
+	float x = collider.GetX();
+	float y = collider.GetY();
+	float width = collider.GetWidth();
+	float height = collider.GetHeight();
 
-	DrawRect((int)x0, (int)y0, (int)x1, (int)y1, 100, 255, 100);
+	float x0 = x; 
+	float y0 = y; 
+	float x1 = x + width;
+	float y1 = y + height;
+
+	DrawRect(x0, y0, x1, y1, 100, 255, 100);
 }
 
 void GameObject::OnTrriger(GameObject * other) {

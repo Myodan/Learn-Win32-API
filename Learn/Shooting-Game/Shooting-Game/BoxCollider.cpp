@@ -33,3 +33,8 @@ float BoxCollider::GetWidth() {
 float BoxCollider::GetHeight() {
 	return height;
 }
+
+void BoxCollider::Translate(float dx, float dy) {
+	x = x + dx;
+	y = y + dy;
+}

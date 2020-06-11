@@ -16,4 +16,6 @@ public:
 	float GetY();
 	float GetWidth();
 	float GetHeight();
+
+	void Translate(float dx, float dy);
 };
