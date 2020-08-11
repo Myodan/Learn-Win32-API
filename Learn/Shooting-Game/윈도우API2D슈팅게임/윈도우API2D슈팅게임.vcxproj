@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{CFF7CEFF-4E6F-4522-854F-DB99C8C1A4C6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>윈도우API2D슈팅게임</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\SBS GAME\Documents\Projects\윈도우API2D슈팅게임\윈도우API2D슈팅게임\Font;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Ayako.h" />
+    <ClInclude Include="AyakoBullet.h" />
+    <ClInclude Include="BMP.h" />
+    <ClInclude Include="BombExp.h" />
+    <ClInclude Include="BombIcon.h" />
+    <ClInclude Include="BombItem.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BoxCollider.h" />
+    <ClInclude Include="BulletExp.h" />
+    <ClInclude Include="BulletItem.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="DeadBoss.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="EndingBG.h" />
+    <ClInclude Include="EndingScene.h" />
+    <ClInclude Include="EnergyBar.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="GameBG.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameOverSprite.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GoHome.h" />
+    <ClInclude Include="graphic.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="JetFire.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MiniPauseBtn.h" />
+    <ClInclude Include="MiniQuitBtn.h" />
+    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="PartsExp.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerBomb.h" />
+    <ClInclude Include="PlayerBullet.h" />
+    <ClInclude Include="PlayerLifeIcon.h" />
+    <ClInclude Include="PlayerShadow.h" />
+    <ClInclude Include="QuitBtn.h" />
+    <ClInclude Include="Radar.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Rotor.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Shield.h" />
+    <ClInclude Include="ShipExp.h" />
+    <ClInclude Include="SpawnManager.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StartBtn.h" />
+    <ClInclude Include="Stealth.h" />
+    <ClInclude Include="StealthBullet.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="TitleBG.h" />
+    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Wing.h" />
+    <ClInclude Include="WingGun.h" />
+    <ClInclude Include="윈도우API2D슈팅게임.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Ayako.cpp" />
+    <ClCompile Include="AyakoBullet.cpp" />
+    <ClCompile Include="BMP.cpp" />
+    <ClCompile Include="BombExp.cpp" />
+    <ClCompile Include="BombIcon.cpp" />
+    <ClCompile Include="BombItem.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="BulletExp.cpp" />
+    <ClCompile Include="BulletItem.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="DeadBoss.cpp" />
+    <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="EndingBG.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
+    <ClCompile Include="EnergyBar.cpp" />
+    <ClCompile Include="GameBG.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameOverSprite.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GoHome.cpp" />
+    <ClCompile Include="graphic.cpp" />
+    <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="JetFire.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MiniPauseBtn.cpp" />
+    <ClCompile Include="MiniQuitBtn.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="PartsExp.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerBomb.cpp" />
+    <ClCompile Include="PlayerBullet.cpp" />
+    <ClCompile Include="PlayerLifeIcon.cpp" />
+    <ClCompile Include="PlayerShadow.cpp" />
+    <ClCompile Include="QuitBtn.cpp" />
+    <ClCompile Include="Radar.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Rotor.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Shield.cpp" />
+    <ClCompile Include="ShipExp.cpp" />
+    <ClCompile Include="SpawnManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StartBtn.cpp" />
+    <ClCompile Include="Stealth.cpp" />
+    <ClCompile Include="StealthBullet.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TitleBG.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="Wing.cpp" />
+    <ClCompile Include="WingGun.cpp" />
+    <ClCompile Include="윈도우API2D슈팅게임.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="윈도우API2D슈팅게임.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico" />
+    <Image Include="윈도우API2D슈팅게임.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
